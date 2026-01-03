@@ -1,0 +1,137 @@
+        body {
+            margin: 0;
+            font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+            background: linear-gradient(180deg, #121212, #1c1c1c);
+            color: #e5e5e5;
+            line-height: 1.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            letter-spacing: 2px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            margin-top: 0;
+            border-left: 6px solid #7fd1ff;
+            padding-left: 14px;
+            font-size: 1.9em;
+        }
+
+        .sub-title {
+            color: #ffb37f;
+            font-size: 1.3em;
+            margin-top: 25px;
+        }
+
+        .box {
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .role {
+            border-left: 4px solid #ff7f7f;
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        .role.human {
+            border-left-color: #7fff9f;
+        }
+
+        .role.adjust {
+            border-left-color: #bfa7ff;
+        }
+
+        .footer {
+            text-align: center;
+            color: #aaa;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        .p1an {
+            animation-name: bounce;
+            animation-duration: 1s;
+        }
+
+        .p2an {
+            animation-name: bounce;
+            animation-duration: 2s;
+        }
+
+        .table1a {
+            animation-name: bounce;
+            animation-duration: 3s;
+        }
+
+        .table2 tr {
+            animation-name: slide;
+            animation-duration: 1s;
+        }
+
+        @keyframes bounce {
+            from {
+                opacity: 0;
+                transform: translateY(200px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slide {
+            from {
+                transform: translateX(200px);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            margin: 10px 10px 0 0;
+            background: linear-gradient(135deg, #7fd1ff, #5bb8ff);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(127, 209, 255, 0.35);
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(127, 209, 255, 0.55);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #ffb37f, #ff8f5b);
+            box-shadow: 0 6px 18px rgba(255, 179, 127, 0.35);
+        }
+
+        .btn.dark {
+            background: #2a2a2a;
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+        }

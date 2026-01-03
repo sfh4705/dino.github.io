@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(180deg, #141414, #1f1f1f);
+    color: #e6e6e6;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #bfbfbf;
+    margin-bottom: 50px;
+}
+
+.section {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 14px;
+    padding: 30px;
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    margin-top: 0;
+    border-left: 6px solid #7fd1ff;
+    padding-left: 14px;
+    font-size: 1.8em;
+}
+
+.info-box {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.highlight {
+    color: #7fd1ff;
+}
+
+.mode {
+    margin-top: 20px;
+    padding-left: 10px;
+    border-left: 3px solid #ff9f7f;
+}
+
+.footer {
+    text-align: center;
+    color: #999;
+    margin-top: 60px;
+    font-size: 0.9em;
+}
+
+a:hover {
+    color: #ff9f7f;
+}
+
+a {
+    color: rgb(27, 67, 244);
+}
+
+@keyframes bounce {
+    from {
+        opacity: 0;
+        transform: translateY(200px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide {
+    from {
+        transform: translateX(200px);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
