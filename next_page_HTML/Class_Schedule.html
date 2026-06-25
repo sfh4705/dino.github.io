@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>課表安排系統</title>
+    <link rel="stylesheet" href="../CSS/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .th1 {
+            background-color: #FEFEB0;
+        }
+
+        .th2 {
+            background-color: #FEFE8D;
+            line-height: normal;
+            padding-left: 4px;
+            padding-right: 4px;
+            width: 15%;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            text-align: center;
+            border: 0px solid red;
+            border-radius: 8px;
+            background-color: #FEFE8D;
+            font-size: large;
+        }
+
+        th {
+            background-color: rgb(255, 255, 255);
+        }
+
+        table {
+            border: 1px solid #FFCC33;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid #FFCC33;
+        }
+
+        .class_name[type=text] {
+            color: #CC3300;
+            background-color: white;
+            font-size: x-large;
+            padding: 0px;
+        }
+
+        .class_teacher[type=text] {
+            color: #0033CC;
+            background-color: white;
+            font-size: larger;
+            padding: 0px;
+            margin: 0px 0;
+            width: 100%;
+        }
+
+        .class_room[type=text] {
+            color: #666666;
+            background-color: white;
+            font-size: large;
+            padding: 0px;
+            margin: 0px 0;
+            width: 100%;
+        }
+
+        .table-container {
+            background-color: #ffffff !important;
+            padding: 30px !important;
+            box-sizing: border-box;
+        }
+
+        #displayTitle {
+            text-align: center;
+            color: #2049c4;
+            font-size: 28px;
+            margin: 0 0 20px 0 !important;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>課表安排系統</h1>
+    </div>
+
+    <div class="table-container">
+
+        <p id="displayTitle"><input type="text" value="我的課表" style="padding: 0px;
+            margin: 0px 0;font-size:30px;background-color: white;color: #2049c4;text-align: center;"></p>
+        <table id="timetable">
+            <thead>
+                <tr>
+                    <th class="th2" colspan="2">節次</th>
+                    <th class="th1">星期一</th>
+                    <th class="th1">星期二</th>
+                    <th class="th1">星期三</th>
+                    <th class="th1">星期四</th>
+                    <th class="th1">星期五</th>
+                    <th class="th1">星期六</th>
+                    <th class="th1">星期日</th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="01">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="08:00-09:00">
+                    </th>
+                    <th>
+                        <input type="text" class="class_name" value="民事訴訟法"><br>
+                        <input type="text" class="class_teacher" value="林洲富">
+                        <input type="text" class="class_room" value="大新0210">
+                    </th>
+                    <th> <input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="02">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="09:00-10:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="03">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="10:00-11:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="04">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="11:00-12:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="05">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="12:00-13:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="06">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="13:00-14:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="07">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="14:00-15:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="08">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="15:00-16:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="09">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="16:00-17:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="10">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="17:00-18:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="11">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="18:00-19:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <tr>
+                    <th class="th2">
+                        <input type="text" value="12">
+                    </th>
+                    <th class="th2">
+                        <input type="text" value="19:00-20:00">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                    <th><input type="text" class="class_name" value=""><br>
+                        <input type="text" class="class_teacher" value="">
+                        <input type="text" class="class_room" value="">
+                    </th>
+                    </th>
+                </tr>
+                <th class="th2">
+                    <input type="text" value="13">
+                </th>
+                <th class="th2">
+                    <input type="text" value="20:00-21:00">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                </tr>
+                <th class="th2">
+                    <input type="text" value="14">
+                </th>
+                <th class="th2">
+                    <input type="text" value="21:00-22:00">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                <th><input type="text" class="class_name" value=""><br>
+                    <input type="text" class="class_teacher" value="">
+                    <input type="text" class="class_room" value="">
+                </th>
+                </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <form id="scheduleForm" style="font-size:20px;text-align:center;">
+            <span style="color: rgb(0, 0, 0);">學號：
+                <input type="text" placeholder="請輸入學號" required
+                    style="text-align:left;color: rgb(1, 37, 145);width: auto;background-color: white;">
+            </span><br>
+            <span style="color: rgb(0, 0, 0);">請輸入存取號：
+                <input type="password" required>
+            </span><br>
+            <span>
+                PDF檔名：
+                <input type="text" id="pdfName" placeholder="請輸入檔名" required
+                    style="text-align:left;color: rgb(1, 37, 145);width: auto;background-color: white;">
+            </span>
+            <br>
+            <input type="checkbox" required><span style="color: #ff0000;">請確認已經輸入完成</span><br>
+            <span><button type="submit" class="btn-submit"
+                    style="background-color: rgb(242, 112, 31);">送出</button>&nbsp;<button type="reset"
+                    class="btn-submit" style="background-color: #424242;">重填</button></span>
+        </form>
+    </div>
+    </div>
+    </div>
+    <script>
+        document.getElementById("scheduleForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const fileName = document.getElementById("pdfName").value.trim() || "課表";
+            const { jsPDF } = window.jspdf;
+            const element = document.querySelector(".table-container");
+
+            const canvas = await html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                onclone: (clonedDoc) => {
+
+                    const clonedForm = clonedDoc.getElementById("scheduleForm");
+                    if (clonedForm) clonedForm.style.display = "none";
+
+                    const inputs = clonedDoc.querySelectorAll("#timetable input[type='text']");
+                    inputs.forEach(input => {
+                        const span = clonedDoc.createElement("span");
+                        span.innerText = input.value;
+                        span.className = "pdf-span";
+
+                        span.style.color = window.getComputedStyle(input).color;
+                        span.style.fontSize = window.getComputedStyle(input).fontSize;
+                        span.style.fontWeight = "bold";
+
+                        input.parentNode.insertBefore(span, input);
+                        input.style.display = "none";
+                    });
+                }
+            });
+
+            const imgData = canvas.toDataURL("image/png");
+
+            const pdf = new jsPDF({
+                orientation: "landscape",
+                unit: "mm",
+                format: "a4"
+            });
+
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+
+            const pdfHeight = (canvas.height * pdfWidth / canvas.width);
+
+            pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+            pdf.save(fileName + ".pdf");
+        });
+
+
+        document.getElementById("scheduleTitle").addEventListener("input", function () {
+            document.getElementById("displayTitle").innerText = this.value;
+        });
+    </script>
+</body>
+
+</html>

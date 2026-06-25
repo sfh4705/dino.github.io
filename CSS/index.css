@@ -1,0 +1,173 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, "Noto Sans TC", "Apple Color Emoji", sans-serif;
+}
+
+body {
+    background-color: #ede8e8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.welcome-card {
+    background-color: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(255, 204, 51, 0.2);
+    border: 2px solid #FFCC33;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+
+
+h1 {
+    color: #F8B02A;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+
+h2 {
+    color: #444;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+ul {
+    list-style-position: inside;
+    text-align: left;
+}
+
+li {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.btn-start {
+    background-color: #FFCC33;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 204, 51, 0.4);
+    transition: all 0.2s ease;
+    outline: none;
+}
+/**/
+.space{
+    perspective: 800px;
+/*透視調整，3D宣告，觀察者距離畫面多遠*/
+}
+.box{
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 150px;
+    transform-style: preserve-3d;
+  /*讓子元素保留 3D 空間*/
+    transform-origin: center center -200px;
+  /*旋轉中心設定。X中間 Y中間 Z後-200px*/
+    animation: around 10s linear infinite;
+  /*動畫名稱：around時間：10 秒速度：固定 (linear)無限循環 (infinite)*/
+}
+.face{
+    width: 100%;
+    height: 100%;
+    /*與上面300px貼齊*/
+    background-color: #fff;
+    box-shadow: inset 0px 0px 100px 0px #333;
+    position: absolute;
+    /*相對位置，子元素通常用*/
+    transform-origin: center;
+    font-size: 104px;
+    text-align: center;
+    line-height: 3;
+    /*字高度*/
+}
+.back{
+    transform: translateZ(-300px);
+}
+.left{
+    transform: rotateY(-90deg) translateX(-150px) translateZ(150px);
+}
+.right{
+    transform: rotateY(90deg) translateX(150px) translateZ(150px);
+}
+.top{
+    transform: rotateX(-90deg) translateY(150px) translateZ(150px);
+}
+.bottom{
+    transform: rotateX(90deg) translateY(-150px) translateZ(150px);
+}
+@keyframes around{
+    from{
+        transform: rotateX(360deg) rotateY(360deg)
+    }
+}
+ /*打上後開轉*/
+ .hi{
+    margin:2% auto;
+    width: 190px;
+    height: 240px;
+    background-image: url("https://treehouse-code-samples.s3.amazonaws.com/CSS-DD/codepen/blog/monster.png");
+}
+.hi:hover{
+ background-position: -1900px 0;
+ animation: play .8s steps(10); 
+}
+@keyframes play{
+    from{
+        background-position:   0px 0;
+    }
+    to{
+        background-position: -1900px 0;
+    }
+}
+.heart{
+  font-size:150px;
+  color:#e00;
+  animation: beat .25s infinite alternate;
+  /*動畫名稱 速度(有影格概念)*/
+  transform-origin:center;
+  /*可以設定元素變化的原點。*/
+}
+@keyframes beat{
+  to {transform:scale(1.4)}
+/*縮放大小 配合變形*/
+}
+.hl{
+    margin:20px;
+    width: 50px;
+    height: 72px;
+    background-image: url("https://s.cdpn.io/79/sprite-steps.png");
+}
+.hl:hover{
+ background-position: -500px 0;
+ animation: play .8s steps(10); 
+}
+@keyframes play{
+    from{
+        background-position:   0px 0;
+    }
+    to{
+        background-position: -500px 0;
+    }
+}

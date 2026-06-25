@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>跳轉中</title>
+    <title>課表生成首頁</title>
+    <link rel="stylesheet" href="CSS/main.css">
+    <link rel="stylesheet" href="CSS/index.css">
 </head>
 <body>
-    <meta http-equiv="refresh" content="1;url=魅影追逐網頁/index.html">
+    <div>
+    <h1 style="text-align: center;color: #A17431;font-size: 100px;">網頁程式設計</h1>
+    <div class="welcome-card">
+        <h1 style="color: #121317;">歡迎來到課表生成器</h1>
+        
+        <div class="instructions">
+            <h2>下方為使用說明：</h2>
+            <ul>
+                <li>本網站為課表生成器，可自訂義包含如<mark style="background-color: pink;"><strong>時間、節次、課程名稱、課程標題等</strong></mark>元素。</li>
+                <li>送出資料後，表單內所輸入的內容將會輸出成PDF檔，並下載到本機。</li>
+                <li>學號與存取碼部分還不會寫想要達成的效果部分 (想要存到資料庫，然後之後輸入學號與存取號就可以提領，但不會寫 (👉ﾟヮﾟ)👉)</li>
+            </ul>
+        </div>
+    
+        <button type="button" class="btn-start" onclick="window.location.href='next_page_HTML/Class_Schedule.html'">進入生成器</button>
+    </div>
+          <div class="space">
+    <div class="box">
+      <div class="face front"><div class="hi"></div></div>
+      <div class="face back">2</div>
+      <div class="face left"><div class="heart">&#x2665</div></div>
+      <div class="face right">蕭萬福</div>
+      <div class="face top"><div class="hl"></div></div>
+      <div class="face bottom">B3205385</div>
+    </div>
+    </div>
+
 </body>
 </html>
